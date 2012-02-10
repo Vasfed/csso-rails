@@ -7,7 +7,7 @@ Gem::Specification.new do |s|
   s.version     = Csso::VERSION
   s.platform    = Gem::Platform::RUBY
   s.authors     = ["Vasily Fedoseyev"]
-  s.email       = [""]
+  s.email       = ["vasilyfedoseyev@gmail.com"]
   s.homepage    = "https://github.com/Vasfed/csso-rails"
   s.summary     = %q{CSS Stylesheet optimizer/compressor for Rails}
   s.description = %q{Invoke the CSSO from Ruby}
