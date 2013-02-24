@@ -20,6 +20,6 @@ if ($stdin.tty? && ARGV.empty?) || ARGV.delete('-h') || ARGV.delete('--help')
 else
   # Well, lets read those files
   css = ARGF.read
-  
+
   puts Csso.optimize(css, maniac)
 end

@@ -25,11 +25,11 @@ module Csso
       Optimizer.new.optimize(css, structural_optimization)
     end
   end
-  
-  
+
+
   class Optimizer
     include CallJS
-    
+
     def optimize(css, structural_optimization=true)
       return nil unless css.is_a?(String)
       return css if css.size <= 3
@@ -38,5 +38,5 @@ module Csso
       end
     end
   end
-  
+
 end
