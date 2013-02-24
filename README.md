@@ -1,41 +1,40 @@
-csso-rails: Stylesheet Optimizer(CSSO) for Rails Asset pipeline
-=======
+# csso-rails: Stylesheet Optimizer (CSSO) for Rails Asset pipeline
 
-Ruby adapter for <https://github.com/afelix/csso>
+Ruby adapter for [github.com/afelix/csso](https://github.com/afelix/csso).
 
-About
------
-CSSO does structure-optimization for css.
-Css is usually reduced more than in half in uncompressed and around 15% in gzipped.
+## About
+CSSO does structure-optimization for CSS.
+CSS is usually reduced more than in half in uncompressed and around 15% in gzipped.
 
-### A real-world example
-A living rails application css - some written in less, some handwritten):
+### A Real-World Example
+A living rails application CSS – some written in less, some handwritten):
 
 |        | Original     |  sass  | yui 2.4.7  | csso  | % of original
 |:-------|:------------:|:------:|:-----:|:-----:|:------:
 |Plain   | 129497       | 107006 | 60758 | 60874 | 47%
 |GZipped | 14046        | 12047  | 10558 | 10472 | 74%
 
-Very close to yui compressor, wining in gzipped (you're using nginx mod\_gzip_static, don't you?)
+Very close to yui compressor, wining in gzipped (you’re using nginx `mod\_gzip_static`, don’t you?)
 
-A more hard example - twitter bootstrap.css, already minified:
+A more hard example – twitter bootstrap.css, already minified:
 
 |        | Original     | lessc | yui 2.4.7  | csso  | % of original
 |:-------|:------------:|:-----:|:-----:|:-----:|:------:
 |Plain   | 81443        | 71520 | 68755 | 67679 | 83%
 |GZipped | 12384        | 11633 | 11652 | 11477 | 92%
 
-usage
-------
+Please note than benchmark was taken in summer of 2012, since then things may have changed.
+
+## Usage
 
 ### In Rails 3.1+
-add `gem 'csso-rails'` to your gemfile, and that's it!
+add `gem 'csso-rails'` to your gemfile, and that’s it!
 
 Upon including it becomes the default compressor even if sass is included too.
-More explicit way - set in config: config.assets.css_compressor = :csso
+More explicit way – set in config: `config.assets.css_compressor = :csso`.
 
 
-### In plain ruby
+### In Plain Ruby
 
 ```ruby
  require 'rubygems'
@@ -44,17 +43,17 @@ More explicit way - set in config: config.assets.css_compressor = :csso
  puts Csso.optimize("a{ color: #FF0000; }") # produces "a{color:red}"
 ```
 
-In _maniac mode_(`Csso.optimize(css, true)`, default for pipeline) css is processed several times until it stops getting lighter (there're cases when original csso does not do all optimizations for no reason).
+In _maniac mode_(`Csso.optimize(css, true)`, default for pipeline) CSS is processed several times until it stops getting lighter (there're cases when original csso does not do all optimizations for no reason).
 
-### In command line:
+### In Command Line
 
     ruby_csso non_optimized.css > optimized.css
 
 
-MIT-License
--------
+## MIT-License
 
-> Original CSSO code - Copyright (C) 2011 by Sergey Kryzhanovsky
+> Original CSSO code - Copyright (C) 2011 by Sergey Kryzhanovsky.
+>
 > ruby gem - Copyright(C) 2012 Vasily Fedoseyev
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
