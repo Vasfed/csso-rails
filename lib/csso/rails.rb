@@ -26,7 +26,11 @@ module Csso
     end
 
     def self.register
-      Sprockets::Compressors.register_css_compressor(COMPRESSOR_SYM, 'Csso::CssCompressor', :default => true)
+      if Sprockets.respond_to? :register_compressor
+        Sprockets.register_compressor('text/css', COMPRESSOR_SYM, 'Csso::CssCompressor')
+      else
+        Sprockets::Compressors.register_css_compressor(COMPRESSOR_SYM, 'Csso::CssCompressor', :default => true)
+      end
     end
   end
 
