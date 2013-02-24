@@ -1,9 +1,9 @@
 require "action_controller/railtie"
 
 module Csso
-  
+
   COMPRESSOR_SYM = :csso
-  
+
   class Railtie < ::Rails::Railtie
     initializer "csso.environment", :after => "sprockets.environment" do
       CssCompressor.register
@@ -15,19 +15,19 @@ module Csso
         app.config.assets.css_compressor = :csso
       end
     end
-        
+
   end
-  
+
   class CssCompressor
     def compress(css)
       require 'csso'
       #TODO: settings?
       Csso.optimize(css, true)
-    end    
-    
+    end
+
     def self.register
       Sprockets::Compressors.register_css_compressor(COMPRESSOR_SYM, 'Csso::CssCompressor', :default => true)
     end
   end
-  
+
 end

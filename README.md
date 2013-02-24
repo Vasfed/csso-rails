@@ -8,7 +8,7 @@ About
 CSSO does structure-optimization for css.
 Css is usually reduced more than in half in uncompressed and around 15% in gzipped.
 
-### A real-world example 
+### A real-world example
 A living rails application css - some written in less, some handwritten):
 
 |        | Original     |  sass  | yui 2.4.7  | csso  | % of original

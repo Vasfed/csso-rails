@@ -20,13 +20,13 @@ module Csso
       @js_path = js_path || Pathname(__FILE__).dirname.join('js').to_s
       @cxt = V8::Context.new
       @environment = ModifiedEnvironment.new(@cxt, :path => @js_path)
-      
+
       [Util, Path, Fs].each do |native|
         @environment.native(native.to_s.downcase, native.new)
       end
-      
+
       [Process, Console].each do|replace|
-        @cxt[replace.to_s.downcase] = replace.new      
+        @cxt[replace.to_s.downcase] = replace.new
       end
     end
 
