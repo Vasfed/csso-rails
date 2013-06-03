@@ -1,6 +1,6 @@
 # csso-rails: Stylesheet Optimizer (CSSO) for Rails Asset pipeline
 
-Ruby adapter for [github.com/afelix/csso](https://github.com/afelix/csso).
+Ruby adapter for [github.com/css/csso](https://github.com/css/csso).
 
 ## About
 CSSO does structure-optimization for CSS.

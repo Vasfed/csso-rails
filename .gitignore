@@ -4,3 +4,6 @@
 *.rbc
 .yardoc
 Gemfile.lock
+tmp
+.DS_Store
+
