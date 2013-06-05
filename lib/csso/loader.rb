@@ -17,7 +17,8 @@ module Csso
     end
 
     def initialize js_path=nil
-      @js_path = js_path || Pathname(__FILE__).dirname.join('js').to_s
+      default  = Pathname(__FILE__).dirname.join('../../vendor/csso').to_s
+      @js_path = js_path || default
       @cxt = V8::Context.new
       @environment = ModifiedEnvironment.new(@cxt, :path => @js_path)
 
