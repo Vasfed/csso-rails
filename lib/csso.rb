@@ -2,6 +2,7 @@ require 'v8'
 require 'csso/version'
 require 'csso/utils'
 require 'csso/loader'
+require 'csso/compressor'
 
 module Csso
 

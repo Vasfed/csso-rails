@@ -33,14 +33,21 @@ add `gem 'csso-rails'` to your gemfile, and that’s it!
 Upon including it becomes the default compressor even if sass is included too.
 More explicit way – set in config: `config.assets.css_compressor = :csso`.
 
+### Sprockets
+
+If you use Sprockets without Rails:
+
+```ruby
+require 'csso'
+Csso::CssCompressor.register!
+sprockets_env.css_compressor = :csso
+```
 
 ### In Plain Ruby
 
 ```ruby
- require 'rubygems'
- gem 'csso-rails'
- require 'csso'
- puts Csso.optimize("a{ color: #FF0000; }") # produces "a{color:red}"
+require 'csso'
+puts Csso.optimize("a{ color: #FF0000; }") # produces "a{color:red}"
 ```
 
 In _maniac mode_(`Csso.optimize(css, true)`, default for pipeline) CSS is processed several times until it stops getting lighter (there're cases when original csso does not do all optimizations for no reason).
