@@ -1,10 +1,8 @@
+require 'v8'
 require 'commonjs'
-require 'pathname'
 
 module Csso
   class Loader
-    include CallJS
-
     attr_reader :environment
 
     class ModifiedEnvironment < CommonJS::Environment
@@ -17,7 +15,7 @@ module Csso
     end
 
     def initialize js_path=nil
-      default  = Pathname(__FILE__).dirname.join('../../vendor/csso').to_s
+      default = File.expand_path('../../' + CSSO_JS_LIB_PATH, File.dirname(__FILE__))
       @js_path = js_path || default
       @cxt = V8::Context.new
       @environment = ModifiedEnvironment.new(@cxt, :path => @js_path)

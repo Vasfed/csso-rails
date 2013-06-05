@@ -1,3 +1,3 @@
-$:.unshift Pathname(__FILE__).dirname.join('..','lib')
+$:.unshift File.expand_path('../../lib', __FILE__)
 
 require 'csso'

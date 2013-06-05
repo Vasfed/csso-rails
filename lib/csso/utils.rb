@@ -1,3 +1,5 @@
+require 'v8'
+
 module Csso
   # Utility for calling into the JavaScript runtime.
   module CallJS
