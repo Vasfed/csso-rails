@@ -15,9 +15,8 @@ Gem::Specification.new do |s|
   s.rubyforge_project = "csso-rails"
 
   s.files         = `git ls-files`.split("\n")
-  Dir.chdir(Csso::CSSO_JS_LIB_PATH) do
-    s.files += `git ls-files`.split("\n").map {|f| File.join(Csso::CSSO_JS_LIB_PATH,f)}
-  end
+  s.files         += [Csso::CSSO_JS_LIB]
+
   s.test_files    = `git ls-files -- {test,spec,features}/*`.split("\n")
   s.executables   = `git ls-files -- bin/*`.split("\n").map{ |f| File.basename(f) }
   s.require_paths = ["lib"]
