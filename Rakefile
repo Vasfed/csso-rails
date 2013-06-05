@@ -1,12 +1,17 @@
 require 'bundler'
 require 'bundler/setup'
-require "rspec/core/rake_task"
+
+require 'rake/testtask'
+
+Rake::TestTask.new(:spec) do |t|
+  t.pattern = 'spec/**/*_spec.rb'
+  t.libs.push 'spec'
+end
 
 $:.push File.expand_path("../lib", __FILE__)
 require 'csso/version'
 
 Bundler::GemHelper.install_tasks
-RSpec::Core::RakeTask.new(:spec)
 
 task :default => :spec
 
