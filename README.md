@@ -29,6 +29,7 @@ Please note than benchmark was taken in summer of 2012, since then things may ha
 
 ### In Rails 3.1+
 add `gem 'csso-rails'` to your gemfile, and that’s it!
+(also you may want to add some javascript runtime for ExecJS to pick up, like `gem 'therubyracer'`)
 
 Upon including it becomes the default compressor even if sass is included too.
 More explicit way – set in config: `config.assets.css_compressor = :csso`.

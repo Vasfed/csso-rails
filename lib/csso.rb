@@ -1,12 +1,10 @@
 require 'csso/version'
-require 'csso/utils'
-require 'csso/loader'
+require 'csso/js_lib'
 require 'csso/compressor'
 
 module Csso
 
-  @loader = Csso::Loader.new
-  @csso = @loader.require('cssoapi')
+  @csso = Csso::JsLib.new
 
   def self.js_api
     @csso
@@ -28,14 +26,10 @@ module Csso
 
 
   class Optimizer
-    include CallJS
-
     def optimize(css, structural_optimization=true)
       return nil unless css.is_a?(String)
       return css if css.size <= 3
-      calljs do
-        Csso.js_api['justDoIt'].call(css, !structural_optimization)
-      end
+      Csso.js_api.compress(css, structural_optimization)
     end
   end
 
