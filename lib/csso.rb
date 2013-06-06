@@ -1,8 +1,8 @@
 require 'csso/version'
-require 'csso/js_lib'
-require 'csso/compressor'
 
 module Csso
+  autoload :JsLib,      'csso/js_lib'
+  autoload :Compressor, 'csso/compressor'
 
   def self.js_api
     @csso ||= Csso::JsLib.new
