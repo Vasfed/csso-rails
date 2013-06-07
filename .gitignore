@@ -1,8 +1,8 @@
-.rvmrc
-*.gem
-.bundle
-*.rbc
-.yardoc
-tmp
 .DS_Store
+*~
 
+pkg/
+.yardoc/
+
+.rvmrc
+.bundle
