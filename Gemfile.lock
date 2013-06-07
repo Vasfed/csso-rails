@@ -1,0 +1,22 @@
+PATH
+  remote: .
+  specs:
+    csso-rails (0.2.0)
+      execjs (~> 1.4)
+
+GEM
+  remote: https://rubygems.org/
+  specs:
+    execjs (1.4.0)
+      multi_json (~> 1.0)
+    minitest (5.0.3)
+    multi_json (1.7.6)
+    rake (10.0.4)
+
+PLATFORMS
+  ruby
+
+DEPENDENCIES
+  csso-rails!
+  minitest
+  rake
