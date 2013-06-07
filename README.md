@@ -2,7 +2,6 @@
 
 Ruby adapter for [github.com/css/csso](https://github.com/css/csso).
 
-## About
 CSSO does structure-optimization for CSS.
 CSS is usually reduced more than in half in uncompressed and around 15% in gzipped.
 
@@ -28,11 +27,16 @@ Please note than benchmark was taken in summer of 2012, since then things may ha
 ## Usage
 
 ### In Rails 3.1+
-add `gem 'csso-rails'` to your gemfile, and that’s it!
+
+Add `gem 'csso-rails'` to your gemfile, and that’s it!
 (also you may want to add some javascript runtime for ExecJS to pick up, like `gem 'therubyracer'`)
 
 Upon including it becomes the default compressor even if sass is included too.
-More explicit way – set in config: `config.assets.css_compressor = :csso`.
+More explicit way – set in `config/environment/production.rb`:
+
+```ruby
+config.assets.css_compressor = :csso
+```
 
 ### Sprockets
 
@@ -40,8 +44,7 @@ If you use Sprockets without Rails:
 
 ```ruby
 require 'csso'
-Csso::CssCompressor.register!
-sprockets_env.css_compressor = :csso
+Csso.install(sprockets_env)
 ```
 
 ### In Plain Ruby
@@ -51,7 +54,7 @@ require 'csso'
 puts Csso.optimize("a{ color: #FF0000; }") # produces "a{color:red}"
 ```
 
-In _maniac mode_(`Csso.optimize(css, true)`, default for pipeline) CSS is processed several times until it stops getting lighter (there're cases when original csso does not do all optimizations for no reason).
+In _maniac mode_ (`Csso.optimize(css, true)`, default for pipeline) CSS is processed several times until it stops getting lighter (there're cases when original csso does not do all optimizations for no reason).
 
 ### In Command Line
 

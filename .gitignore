@@ -1,10 +1,8 @@
-.rvmrc
-*.gem
-.bundle
-*.rbc
-.yardoc
-Gemfile.lock
-tmp
 .DS_Store
-csso/
+*~
 
+pkg/
+.yardoc/
+
+.rvmrc
+.bundle
