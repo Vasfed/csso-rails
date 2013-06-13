@@ -1,2 +1,2 @@
 require 'csso'
-require 'csso/rails' if defined?(Rails)
+require 'csso/railtie' if defined?(Rails)
