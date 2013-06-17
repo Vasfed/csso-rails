@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    csso-rails (0.2.0)
+    csso-rails (0.3.0)
       execjs (~> 1.4)
 
 GEM
