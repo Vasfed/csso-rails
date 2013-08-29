@@ -21,8 +21,7 @@ Gem::Specification.new do |s|
   s.executables   = `git ls-files -- bin/*`.split("\n").map{ |f| File.basename(f) }
   s.require_paths = ["lib"]
 
-  #TODO: loosen execjs dependency?
-  s.add_dependency 'execjs', '~>1.4'
+  s.add_dependency 'execjs', '>= 1'
 
   s.add_development_dependency 'rake'
   s.add_development_dependency 'minitest'
