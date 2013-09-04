@@ -37,9 +37,17 @@ end
 directory 'vendor/csso'
 lib_template = 'lib/csso/csso.js.erb'
 file Csso::CSSO_JS_LIB => [lib_template, 'csso', 'vendor/csso', 'csso/.git/HEAD', 'csso/.git/refs/heads/master'] do
+  puts "Generating #{Csso::CSSO_JS_LIB}"
   `erb #{lib_template} > #{Csso::CSSO_JS_LIB}`
 end
 
 task :generate_files => [Csso::CSSO_JS_LIB]
+
+task :rm_generated do
+  puts "Removing #{Csso::CSSO_JS_LIB}"
+  `rm #{Csso::CSSO_JS_LIB}`
+end
+
+task :regenerate => [:rm_generated, :generate_files]
 
 task :build => :generate_files
