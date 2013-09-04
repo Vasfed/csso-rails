@@ -11,6 +11,7 @@ Gem::Specification.new do |s|
   s.homepage    = "https://github.com/Vasfed/csso-rails"
   s.summary     = %q{CSS Stylesheet optimizer/compressor for Rails}
   s.description = %q{Invoke the CSSO from Ruby}
+  s.license     = 'MIT'
 
   s.rubyforge_project = "csso-rails"
 
