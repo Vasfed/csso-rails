@@ -1,25 +1,6 @@
 #!/usr/bin/env ruby
 
 require 'csso-rails'
+require 'csso/cli'
 
-def help
-  puts <<-HLP
-  csso- CSS Optimizer (ruby bindings by vasfed)
-Usage:
-  $ ruby_csso < style.css - read stdin and output to stdout
-  $ ruby_csso file1.css [file2.css [...]] - read all files and output to stdout (concatenating, no optimization between files yet)
-  --help - print this help
-  --maniac - enable maniac mode (optimize file multiple times until optimization stops to give any results)
-HLP
-end
-
-maniac = ARGV.delete('--maniac') && true || false
-
-if ($stdin.tty? && ARGV.empty?) || ARGV.delete('-h') || ARGV.delete('--help')
-  help
-else
-  # Well, lets read those files
-  css = ARGF.read
-
-  puts Csso.optimize(css, maniac)
-end
+Csso::CLI.run!
