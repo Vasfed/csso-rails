@@ -25,7 +25,8 @@ file 'csso' do
   }
 end
 
-task :update_csso => :csso do
+desc "updates csso repo"
+task :update_csso_repo => :csso do
   #??
   Dir.chdir('csso'){
     puts 'Updating csso...'
@@ -41,13 +42,18 @@ file Csso::CSSO_JS_LIB => [lib_template, 'csso', 'vendor/csso', 'csso/.git/HEAD'
   `erb #{lib_template} > #{Csso::CSSO_JS_LIB}`
 end
 
-task :generate_files => [Csso::CSSO_JS_LIB]
+desc "Generate bundled csso from repo"
+task :generate_files => [:csso, Csso::CSSO_JS_LIB]
 
+desc "Clean generated files"
 task :rm_generated do
   puts "Removing #{Csso::CSSO_JS_LIB}"
   `rm #{Csso::CSSO_JS_LIB}`
 end
 
 task :regenerate => [:rm_generated, :generate_files]
+
+desc "Update CSSO"
+task :update_csso => [:rm_generated, :update_csso_repo, :generate_files]
 
 task :build => :generate_files
