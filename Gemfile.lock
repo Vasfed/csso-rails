@@ -1,15 +1,15 @@
 PATH
   remote: .
   specs:
-    csso-rails (0.3.3)
+    csso-rails (0.3.4)
       execjs (>= 1)
 
 GEM
   remote: https://rubygems.org/
   specs:
-    execjs (2.0.1)
-    minitest (5.0.3)
-    rake (10.0.4)
+    execjs (2.0.2)
+    minitest (5.3.1)
+    rake (10.1.1)
 
 PLATFORMS
   ruby
