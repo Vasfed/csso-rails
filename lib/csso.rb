@@ -10,7 +10,7 @@ module Csso
 
   def self.install(sprockets)
     if sprockets.respond_to? :register_compressor
-      sprockets.register_compressor('text/css', :csso, Compressor.new)
+      sprockets.register_compressor('text/css', :csso, Compressor)
       sprockets.css_compressor = :csso
     else
       Sprockets::Compressors.register_css_compressor(:csso, 'Csso::Compressor', :default => true)

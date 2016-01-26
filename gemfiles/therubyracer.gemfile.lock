@@ -1,5 +1,5 @@
 PATH
-  remote: .
+  remote: ../
   specs:
     csso-rails (0.4.0)
       execjs (>= 1)

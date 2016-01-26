@@ -1,4 +1,4 @@
 module Csso
-  VERSION = '0.3.4'
+  VERSION = '0.4.0'
   CSSO_JS_LIB = 'vendor/csso/csso.js'
 end
