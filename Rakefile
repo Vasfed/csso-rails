@@ -21,7 +21,7 @@ file 'csso' do
   `git clone --single-branch --depth 1 --no-hardlinks git://github.com/css/csso`
   Dir.chdir('csso'){
     puts 'Now making web-version, just in case.'
-    `rm web/csso.web.js; make web`
+    `npm install && npm run browserify`
   }
 end
 
@@ -31,7 +31,7 @@ task :update_csso_repo => :csso do
   Dir.chdir('csso'){
     puts 'Updating csso...'
     `git pull --rebase`
-    `rm web/csso.web.js; make web`
+    `npm install && npm run browserify`
   }
 end
 
