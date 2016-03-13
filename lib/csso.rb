@@ -9,6 +9,11 @@ module Csso
   end
 
   def self.install(sprockets)
+    unless sprockets
+      raise "no compatible sprockets found" unless Sprockets.respond_to? :register_compressor
+      Sprockets.register_compressor('text/css', :csso, Compressor)
+      return
+    end
     if sprockets.respond_to? :register_compressor
       sprockets.register_compressor('text/css', :csso, Compressor)
       sprockets.css_compressor = :csso

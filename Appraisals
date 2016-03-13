@@ -10,6 +10,15 @@ appraise "sprockets-3" do
   gem "sprockets", "~>3.0"
 end
 
+appraise "sprockets-4" do
+  gem "sprockets", "~>4.0.0.beta2"
+end
+
+appraise "rails-4" do
+  gem "rails", '4.2.5.1'
+end
+
+
 appraise "therubyracer" do
   #TODO: currently rubyracer segfaults on my machine, fix that and start testing
   # gem "therubyracer"

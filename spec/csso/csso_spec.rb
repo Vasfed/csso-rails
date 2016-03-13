@@ -3,7 +3,7 @@
 require 'minitest/autorun'
 require 'csso'
 
-Encoding.default_external = Encoding::UTF_8
+# Encoding.default_external = Encoding::UTF_8
 
 describe Csso do
 

@@ -4,7 +4,7 @@ require 'minitest/autorun'
 require 'fileutils'
 require 'csso'
 
-Encoding.default_external = Encoding::UTF_8
+# Encoding.default_external = Encoding::UTF_8
 
 describe Csso do
 
@@ -46,6 +46,21 @@ describe Csso do
     manifest.clobber
   end
 
+  it "loads into rails" do
+    begin
+      require "rails"
+    rescue LoadError
+      skip "no rails in this env"
+    end
+    require "sprockets/railtie"
+    require 'csso/railtie'
 
-
+    app = Class.new(Rails::Application) do
+      config.eager_load = false
+      config.assets.enabled = true
+    end
+    app.initialize!
+    app.config.assets.css_compressor.must_equal :csso
+    app.assets.css_compressor.must_equal Csso::Compressor
+  end
 end
