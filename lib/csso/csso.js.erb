@@ -25,9 +25,9 @@ console = {
 
 <%= file 'csso/dist/csso-browser.js' %>
 
-do_compression = function(css, disable_structural){
+do_compression = function(css, structural){
    return csso.minify(css, {
-        restructure: !disable_structural
+        restructure: structural
     });
 };
 

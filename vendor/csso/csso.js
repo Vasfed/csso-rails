@@ -22,6 +22,7 @@ do_compression = function(css, structural){
         restructure: structural
     });
 };
+
 do_compression_with_map = function(css, filename, structural){
    var result = csso.minify(css, {
         restructure: structural,
