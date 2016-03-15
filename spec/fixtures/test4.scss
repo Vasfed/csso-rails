@@ -1,0 +1,10 @@
+@import 'test3';
+
+$color: #ff0000;
+
+.class {
+  .other_class{
+    // comment blablabla
+    color: $color;
+  }
+}

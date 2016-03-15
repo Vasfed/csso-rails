@@ -15,7 +15,11 @@ module Csso
     end
 
     def compress css, structural_optimization=true
-      @csso.call("do_compression", css, !structural_optimization)
+      @csso.call("do_compression", css, structural_optimization)
+    end
+
+    def compress_with_sourcemap css, filename, structural_optimization=true
+      @csso.call("do_compression_with_map", css, filename, structural_optimization)
     end
 
   end

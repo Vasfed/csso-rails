@@ -30,3 +30,12 @@ do_compression = function(css, disable_structural){
         restructure: !disable_structural
     });
 };
+
+do_compression_with_map = function(css, filename, structural){
+   var result = csso.minify(css, {
+        restructure: structural,
+        filename: filename,
+        sourceMap: true
+    });
+  return [result.css, result.map.toString()];
+};

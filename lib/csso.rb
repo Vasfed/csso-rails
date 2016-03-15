@@ -36,6 +36,12 @@ module Csso
     end
   end
 
+  def self.optimize_with_sourcemap css, filename, structural_optimization=true
+    return nil unless css.is_a?(String)
+    return css if css.size <= 3
+    Csso.js_api.compress_with_sourcemap(css, filename, structural_optimization)
+  end
+
 
   class Optimizer
     def optimize(css, structural_optimization=true)
