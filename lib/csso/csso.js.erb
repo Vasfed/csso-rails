@@ -27,6 +27,6 @@ console = {
 
 do_compression = function(css, disable_structural){
    return csso.minify(css, {
-        restructuring: !disable_structural
+        restructure: !disable_structural
     });
 };
