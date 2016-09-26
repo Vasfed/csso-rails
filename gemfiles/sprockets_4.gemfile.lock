@@ -1,7 +1,7 @@
 PATH
   remote: ../
   specs:
-    csso-rails (0.5.0)
+    csso-rails (0.6.0)
       execjs (>= 1)
 
 GEM
@@ -12,7 +12,7 @@ GEM
       rake
       thor (>= 0.14.0)
     concurrent-ruby (1.0.1)
-    execjs (2.6.0)
+    execjs (2.7.0)
     minitest (5.8.4)
     rack (1.6.4)
     rake (11.1.0)
