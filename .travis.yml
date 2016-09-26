@@ -1,0 +1,21 @@
+language: ruby
+rvm:
+  - 2.3
+  - 2.0
+gemfile:
+  - gemfiles/rails_4.gemfile
+  - gemfiles/sprockets_2.gemfile
+  - gemfiles/sprockets_3.gemfile
+  - gemfiles/sprockets_4.gemfile
+  - gemfiles/therubyracer.gemfile
+
+matrix:
+  exclude:
+  - rvm: 2.0
+    gemfile: gemfiles/sprockets_3.gemfile
+  - rvm: 2.0
+    gemfile: gemfiles/sprockets_4.gemfile
+  - rvm: 2.0
+    gemfile: gemfiles/therubyracer.gemfile
+  - rvm: 2.0
+    gemfile: gemfiles/rails_4.gemfile
