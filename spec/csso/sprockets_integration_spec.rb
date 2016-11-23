@@ -60,7 +60,7 @@ describe Csso do
     manifest.compile('test2.css')
     manifest.compile('test2.css.map')
     json = JSON.load File.read(manifest_file)
-    json["assets"]["test2.css"].must_match /\.css$/
+    json["assets"]["test2.css"].must_match(/\.css$/)
     sprockets_env['test2.css'].source.must_equal '.class,.class .other_class{color:red}.something{color:#000}.test2{color:#00f}'
     map = JSON.load(sprockets_env['test2.css.map'].source)
     map["sources"].size.must_equal 4
