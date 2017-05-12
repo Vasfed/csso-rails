@@ -3,8 +3,8 @@ require 'execjs'
 module Csso
   class JsLib
 
-    def initialize
-      if ExecJS.runtime.is_a?(ExecJS::ExternalRuntime)
+    def initialize verbose=false
+      if verbose && ExecJS.runtime.is_a?(ExecJS::ExternalRuntime)
         warn "You're using ExecJS::ExternalRuntime, did you forget to add therubyracer or other execjs runtime to gemfile?"
       end
 
