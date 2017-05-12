@@ -1,7 +1,7 @@
 PATH
-  remote: ../
+  remote: ..
   specs:
-    csso-rails (0.6.0)
+    csso-rails (0.7.0)
       execjs (>= 1)
 
 GEM
@@ -26,4 +26,4 @@ DEPENDENCIES
   rake
 
 BUNDLED WITH
-   1.11.2
+   1.14.6
