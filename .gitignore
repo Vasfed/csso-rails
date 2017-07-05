@@ -10,3 +10,6 @@ tmp
 /csso/
 /log/
 /.idea/
+
+Gemfile.lock
+gemfiles/*.lock
