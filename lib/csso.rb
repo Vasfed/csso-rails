@@ -24,7 +24,7 @@ module Csso
 
   def self.optimize(css, maniac_mode=false, structural_optimization=true)
     if maniac_mode
-      maniac_mode = 4 unless maniac_mode.is_a?(Fixnum) && maniac_mode > 0
+      maniac_mode = 4 unless maniac_mode.is_a?(Integer) && maniac_mode > 0
       begin
         prev_css = css
         css = Optimizer.new.optimize(css, structural_optimization)
