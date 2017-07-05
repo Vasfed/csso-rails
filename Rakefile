@@ -31,7 +31,7 @@ task :update_csso_repo => :csso do
   Dir.chdir('csso'){
     puts 'Updating csso...'
     `git pull --rebase`
-    `npm install && npm run browserify`
+    `yarn install && npm run browserify`
   }
 end
 
