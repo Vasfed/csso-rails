@@ -3,6 +3,7 @@
 require 'minitest/autorun'
 require 'fileutils'
 require 'csso'
+require 'mocha/mini_test'
 
 # Encoding.default_external = Encoding::UTF_8
 
@@ -21,8 +22,11 @@ describe Csso do
     # e.logger = Logger.new STDOUT
     e
   }
+  let(:fixtures_dir){
+    File.expand_path('../fixtures', File.dirname(__FILE__))
+  }
   let(:result_dir){
-    d = File.expand_path('../fixtures/res', File.dirname(__FILE__))
+    d = File.expand_path('res', fixtures_dir)
     FileUtils.mkdir_p(d)
     d
   }
@@ -31,7 +35,11 @@ describe Csso do
   }
   let(:manifest){
     sprockets_env
-    Sprockets::Manifest.new(sprockets_env, result_dir, manifest_file)
+    # unless Sprockets::VERSION <= '2.99'
+      # Sprockets::Manifest.new(sprockets_env, result_dir, manifest_file)
+    # else
+      Sprockets::Manifest.new(sprockets_env, manifest_file)
+    # end
   }
   let(:sprockets_env){
     subject.install(sprockets_env_without_csso)
@@ -39,7 +47,8 @@ describe Csso do
   }
 
   it "installs" do
-    sprockets_env.css_compressor.must_equal Csso::Compressor
+    # sprockets_env.css_compressor.must_equal Csso::Compressor
+
     manifest.environment.must_equal(sprockets_env)
     manifest.clobber
     res = manifest.compile('test.css')
@@ -76,12 +85,46 @@ describe Csso do
     require "sprockets/railtie"
     require 'csso/railtie'
 
+    fd = fixtures_dir
     app = Class.new(Rails::Application) do
       config.eager_load = false
       config.assets.enabled = true
+
+      config.paths['public'] = fd
+      config.assets.paths = [ fd ]
+      config.assets.prefix = 'res'
+
+      config.assets.precompile = ['test.css']
+      config.active_support.deprecation = :log
     end
     app.initialize!
+
     app.config.assets.css_compressor.must_equal :csso
-    app.assets.css_compressor.must_equal Csso::Compressor
+    if Sprockets::VERSION >= '3'
+      app.assets.css_compressor.must_equal Csso::Compressor
+    end
+
+    Csso::Compressor.expects(:call).returns({data: 'foo_this_is_mock'})
+
+    require 'rake'
+    res_dir = "#{fd}/res"
+    if File.exist?(res_dir)
+      puts "Unclean from previous run"
+      FileUtils.rm_rf(res_dir)
+    end
+    if File.exist?('tmp/cache')
+      # we need clean cache, so rails will precompile for real
+      puts "Unclean cache from previous run"
+      FileUtils.rm_rf('tmp/cache')
+    end
+    Rails.application.load_tasks
+    ENV['RAILS_GROUPS'] ||= "assets"
+    ENV['RAILS_ENV'] ||= "test"
+    Rake::Task['assets:precompile'].invoke
+
+    Rails.application.assets['test.css'].source.must_equal 'foo_this_is_mock'
+
+    FileUtils.rm_r(res_dir)
+    FileUtils.rm_rf('tmp/cache') if File.exist?('tmp/cache')
   end
 end
