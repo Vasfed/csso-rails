@@ -5,4 +5,4 @@ source "https://rubygems.org"
 gem "sprockets", "~>4.0.0.beta4"
 gem "sass", ">=3.3"
 
-gemspec :path => "../"
+gemspec path: "../"
