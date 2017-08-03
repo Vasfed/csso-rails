@@ -18,7 +18,8 @@ module Csso
       sprockets.register_compressor('text/css', :csso, Compressor)
       sprockets.css_compressor = :csso
     else
-      Sprockets::Compressors.register_css_compressor(:csso, 'Csso::Compressor', :default => true)
+      # Sprockets::Compressors.register_css_compressor(:csso, 'Csso::Compressor::Legacy', :default => true)
+      sprockets.css_compressor = Csso::Compressor::Legacy
     end
   end
 

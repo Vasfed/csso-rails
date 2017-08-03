@@ -4,6 +4,7 @@ module Csso
 
   class Railtie < ::Rails::Railtie
     initializer "csso.environment", :after => "sprockets.environment" do |app|
+      #NB: app.assets may be nil, sprockets-rails creates env in after_initialize
       Csso.install(app.assets)
     end
 
