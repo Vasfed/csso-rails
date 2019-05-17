@@ -3,7 +3,7 @@
 require 'minitest/autorun'
 require 'fileutils'
 require 'csso'
-require 'mocha/mini_test'
+require 'mocha/minitest'
 
 # Encoding.default_external = Encoding::UTF_8
 
