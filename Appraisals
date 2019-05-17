@@ -11,27 +11,27 @@ appraise "sprockets-3" do
 end
 
 appraise "sprockets-4" do
-  gem "sprockets", "~>4.0.0.beta4"
+  gem "sprockets", "~>4.0.0.beta8"
   gem 'sass', '>=3.3'
 end
 
-appraise "rails-3.2" do
+appraise "rails-3" do
   gem "rails", "~>3.2"
 end
 
-appraise "rails-4.2" do
+appraise "rails-4" do
   gem "rails", '~>4.2.0'
 end
 
-appraise "rails-5.0" do
-  gem "rails", '~>5.0.0'
+appraise "rails-5" do
+  gem "rails", '~>5.2'
 end
 
-appraise "rails-5.1" do
-  gem "rails", '~>5.1.0'
+appraise "rails-6" do
+  gem "rails", '~>6.0.0.rc1'
 end
 
-appraise "therubyracer" do
+# appraise "therubyracer" do
   #TODO: currently rubyracer segfaults on my machine, fix that and start testing
   # gem "therubyracer"
-end
+# end

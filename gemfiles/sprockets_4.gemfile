@@ -2,7 +2,7 @@
 
 source "https://rubygems.org"
 
-gem "sprockets", "~>4.0.0.beta4"
+gem "sprockets", "~>4.0.0.beta8"
 gem "sass", ">=3.3"
 
 gemspec path: "../"
