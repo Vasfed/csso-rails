@@ -11,8 +11,8 @@ appraise "sprockets-3" do
 end
 
 appraise "sprockets-4" do
-  gem "sprockets", "~>4.0.0.beta8"
-  gem 'sass', '>=3.3'
+  gem "sprockets", "~>4.0"
+  gem 'sass-rails', '>=6.0'
 end
 
 appraise "rails-3" do
