@@ -23,6 +23,6 @@ matrix:
       gemfile: gemfiles/rails_4.gemfile
 
     - rvm: 2.6
-      install:
+      gemfile: Gemfile
       script: "bundle exec rubocop"
       env: "RUBOCOP=true"

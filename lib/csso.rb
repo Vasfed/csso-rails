@@ -29,12 +29,12 @@ module Csso
 
   def self.optimize(css, maniac_mode = false, structural_optimization = true)
     if maniac_mode
-      maniac_mode = 4 unless maniac_mode.is_a?(Integer) && maniac_mode.positive?
+      maniac_mode = 4 unless maniac_mode.is_a?(Integer) && maniac_mode > 0
       loop do
         prev_css = css
         css = Csso.js_api.compress(css, structural_optimization)
         maniac_mode -= 1
-        break if !maniac_mode.positive? || prev_css == css
+        break if maniac_mode <= 0 || prev_css == css
       end
       css
     else

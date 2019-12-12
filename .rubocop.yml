@@ -27,6 +27,10 @@ Naming/FileName:
     # this is the gem name:
     - 'lib/csso-rails.rb'
 
+Style/NumericPredicate:
+  # not supported in ruby < 2.3
+  Enabled: false
+
 Metrics/LineLength:
   Max: 140
 
