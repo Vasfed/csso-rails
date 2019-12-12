@@ -1,0 +1,43 @@
+# The behavior of RuboCop can be controlled via the .rubocop.yml
+# configuration file. It makes it possible to enable/disable
+# certain cops (checks) and to alter their behavior if they accept
+# any parameters. The file can be placed either in your home
+# directory or in some project directory.
+#
+# RuboCop will start looking for the configuration file in the directory
+# where the inspected file is and continue its way up to the root directory.
+#
+# See https://github.com/rubocop-hq/rubocop/blob/master/manual/configuration.md
+
+require:
+ - 'rubocop-performance'
+
+AllCops:
+  # DefaultFormatter: fuubar
+  TargetRubyVersion: 2.3
+  Exclude:
+    - 'tmp/**/**'
+    - 'csso/**'
+    - 'pkg/**'
+    # appraisal generates with some offences:
+    - 'gemfiles/**'
+
+Naming/FileName:
+  Exclude:
+    # this is the gem name:
+    - 'lib/csso-rails.rb'
+
+Metrics/LineLength:
+  Max: 140
+
+Metrics/MethodLength:
+  Max: 30
+
+Metrics/BlockLength:
+  Exclude:
+    - 'spec/**/**'
+    - '*.gemspec'
+
+Metrics/AbcSize:
+  Exclude:
+    - 'lib/csso/cli.rb'

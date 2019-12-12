@@ -21,3 +21,4 @@ matrix:
       gemfile: gemfiles/rails_3.gemfile
     - rvm: 2.3
       gemfile: gemfiles/rails_4.gemfile
+    - script: bundle exec rubocop
