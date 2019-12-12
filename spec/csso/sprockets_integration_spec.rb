@@ -3,7 +3,6 @@
 require 'minitest/autorun'
 require 'fileutils'
 require 'csso'
-require 'mocha/minitest'
 
 # Encoding.default_external = Encoding::UTF_8
 
@@ -87,6 +86,7 @@ describe Csso do
 
     fd = fixtures_dir
     app = Class.new(Rails::Application) do
+      config.root = fd
       config.eager_load = false
       config.assets.enabled = true
 
@@ -96,6 +96,7 @@ describe Csso do
 
       config.assets.precompile = ['test.css']
       config.active_support.deprecation = :log
+      # config.active_support.deprecation = :raise
     end
     app.initialize!
 
@@ -103,8 +104,6 @@ describe Csso do
     if Sprockets::VERSION >= '3'
       app.assets.css_compressor.must_equal Csso::Compressor
     end
-
-    Csso::Compressor.expects(:call).returns({data: 'foo_this_is_mock'})
 
     require 'rake'
     res_dir = "#{fd}/res"
@@ -120,11 +119,15 @@ describe Csso do
     Rails.application.load_tasks
     ENV['RAILS_GROUPS'] ||= "assets"
     ENV['RAILS_ENV'] ||= "test"
-    Rake::Task['assets:precompile'].invoke
+
+    Csso::Compressor.stub :call, {data: 'foo_this_is_mock'} do
+      Rake::Task['assets:precompile'].invoke
+    end
 
     Rails.application.assets['test.css'].source.must_equal 'foo_this_is_mock'
 
     FileUtils.rm_r(res_dir)
+    FileUtils.rm_r("#{fd}/log")
     FileUtils.rm_rf('tmp/cache') if File.exist?('tmp/cache')
   end
 end
