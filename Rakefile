@@ -14,6 +14,7 @@ require 'csso/version'
 Bundler::GemHelper.install_tasks
 
 task :default => :spec
+task :test => :spec
 
 
 file 'csso' do
@@ -21,7 +22,7 @@ file 'csso' do
   `git clone --single-branch --depth 1 --no-hardlinks git://github.com/css/csso`
   Dir.chdir('csso'){
     puts 'Now making web-version, just in case.'
-    `npm install && npm run browserify`
+    `npm install && npm run build`
   }
 end
 
@@ -31,7 +32,7 @@ task :update_csso_repo => :csso do
   Dir.chdir('csso'){
     puts 'Updating csso...'
     `git pull --rebase`
-    `yarn install && npm run browserify`
+    `yarn install && npm run build`
   }
 end
 
