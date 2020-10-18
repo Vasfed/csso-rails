@@ -47,13 +47,13 @@ describe Csso do
   it 'installs' do
     # sprockets_env.css_compressor.must_equal Csso::Compressor
 
-    manifest.environment.must_equal(sprockets_env)
+    expect(manifest.environment).must_equal(sprockets_env)
     manifest.clobber
     res = manifest.compile('test.css')
-    res.size.must_equal 1
-    [File.expand_path('../fixtures/test.css', __dir__), 'test.css'].must_include res.first
-    File.read(manifest_file).wont_equal '{}'
-    sprockets_env['test.css'].source.must_equal '.class{color:red}'
+    expect(res.size).must_equal 1
+    expect([File.expand_path('../fixtures/test.css', __dir__), 'test.css']).must_include res.first
+    expect(File.read(manifest_file)).wont_equal '{}'
+    expect(sprockets_env['test.css'].source).must_equal '.class{color:red}'
     manifest.clobber
   end
 
@@ -67,10 +67,10 @@ describe Csso do
     manifest.compile('test2.css')
     manifest.compile('test2.css.map')
     json = JSON.parse File.read(manifest_file)
-    json['assets']['test2.css'].must_match(/\.css$/)
-    sprockets_env['test2.css'].source.must_equal '.class,.class .other_class{color:red}.something{color:#000}.test2{color:#00f}'
+    expect(json['assets']['test2.css']).must_match(/\.css$/)
+    expect(sprockets_env['test2.css'].source).must_equal '.class,.class .other_class{color:red}.something{color:#000}.test2{color:#00f}'
     map = JSON.parse(sprockets_env['test2.css.map'].source)
-    map['sources'].size.must_equal 4
+    expect(map['sources'].size).must_equal 4
     manifest.clobber
   end
 
@@ -99,8 +99,8 @@ describe Csso do
     end
     app.initialize!
 
-    app.config.assets.css_compressor.must_equal :csso
-    app.assets.css_compressor.must_equal(Csso::Compressor) if Sprockets::VERSION >= '3'
+    expect(app.config.assets.css_compressor).must_equal :csso
+    expect(app.assets.css_compressor).must_equal(Csso::Compressor) if Sprockets::VERSION >= '3'
 
     require 'rake'
     res_dir = "#{fd}/res"
@@ -121,7 +121,7 @@ describe Csso do
       Rake::Task['assets:precompile'].invoke
     end
 
-    Rails.application.assets['test.css'].source.must_equal 'foo_this_is_mock'
+    expect(Rails.application.assets['test.css'].source).must_equal 'foo_this_is_mock'
 
     FileUtils.rm_r(res_dir)
     FileUtils.rm_r("#{fd}/log")
