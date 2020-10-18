@@ -6,5 +6,6 @@ gem 'irb'
 
 gem 'rubocop'
 gem 'rubocop-performance'
+gem 'bundler', '~> 1.17' # rails 3 requirement
 
 gemspec
