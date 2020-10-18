@@ -4,8 +4,8 @@ source 'https://rubygems.org'
 
 gem 'irb'
 
+gem 'bundler', '~> 1.16' # rails 3 requirement
 gem 'rubocop'
 gem 'rubocop-performance'
-gem 'bundler', '~> 1.17' # rails 3 requirement
 
 gemspec

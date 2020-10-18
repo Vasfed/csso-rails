@@ -10,7 +10,7 @@ module Csso
         warn "You're using ExecJS::ExternalRuntime, did you forget to add therubyracer or other execjs runtime to gemfile?"
       end
 
-      lib = File.read(File.expand_path('../../' + CSSO_JS_LIB, File.dirname(__FILE__)))
+      lib = File.read(File.expand_path("../../#{CSSO_JS_LIB}", File.dirname(__FILE__)))
       raise 'cannot compile or what?' unless (@csso = ExecJS.runtime.compile(lib))
     end
 

@@ -34,6 +34,7 @@ Gem::Specification.new do |s|
   end
   s.require_paths = ['lib']
 
+  s.required_ruby_version = '>= 1.9.2' # rubocop:disable Gemspec/RequiredRubyVersion
   s.add_dependency 'execjs', '>= 1'
 
   s.add_development_dependency 'appraisal'

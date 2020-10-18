@@ -14,7 +14,8 @@ require:
 
 AllCops:
   # DefaultFormatter: fuubar
-  TargetRubyVersion: 2.3
+  TargetRubyVersion: 2.4
+  NewCops: enable
   Exclude:
     - 'tmp/**/**'
     - 'csso/**'
@@ -31,7 +32,10 @@ Style/NumericPredicate:
   # not supported in ruby < 2.3
   Enabled: false
 
-Metrics/LineLength:
+Style/OptionalBooleanParameter:
+  Enabled: false
+
+Layout/LineLength:
   Max: 140
 
 Metrics/MethodLength:
