@@ -2,6 +2,10 @@
 
 source "https://rubygems.org"
 
+gem "irb"
+gem "rubocop"
+gem "rubocop-performance"
+gem "bundler", "~> 1.17"
 gem "sprockets", "~>4.0"
 gem "sass-rails", ">=6.0"
 
