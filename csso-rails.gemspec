@@ -18,11 +18,12 @@ Gem::Specification.new do |s|
 
   s.files = `git ls-files -z`.split("\x0").reject do |f|
     f.match(Regexp.union(
-              /^\./,
+              %r{^gemfiles/},
+              %r{lib/csso/csso.js.erb},
               %r{^spec/},
+              /^\./,
               /^Appraisals/,
               /^Gemfile/,
-              %r{^gemfiles/},
               /^Rakefile/
             ))
   end
