@@ -11,10 +11,14 @@
 
 require:
  - 'rubocop-performance'
+ - 'rubocop-minitest'
+ - 'rubocop-rake'
 
 AllCops:
   # DefaultFormatter: fuubar
-  TargetRubyVersion: 2.4
+
+  # modern rubocop dropped old rubies, use oldest available
+  TargetRubyVersion: 2.5
   NewCops: enable
   Exclude:
     - 'tmp/**/**'

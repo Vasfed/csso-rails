@@ -15,8 +15,9 @@ require 'csso/version'
 
 Bundler::GemHelper.install_tasks
 
-task default: :spec
+desc 'test is the default'
 task test: :spec
+task default: :spec
 
 file 'csso' do
   puts 'Fetching csso repo...'
@@ -64,4 +65,5 @@ task regenerate: %i[rm_generated generate_files]
 desc 'Update CSSO'
 task update_csso: %i[rm_generated update_csso_repo generate_files]
 
+desc 'alias for generate_files'
 task build: :generate_files
