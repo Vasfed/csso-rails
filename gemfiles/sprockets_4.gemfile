@@ -2,8 +2,6 @@
 
 source "https://rubygems.org"
 
-gem "irb"
-gem "bundler", "~> 1.16"
 gem "sprockets", "~>4.0"
 gem "sass-rails", ">=6.0"
 
