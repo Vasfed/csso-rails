@@ -1,6 +1,7 @@
 # csso-rails: Stylesheet Optimizer (CSSO) for Rails Asset pipeline
 
 [![Gem Version](https://badge.fury.io/rb/csso-rails.svg)](https://badge.fury.io/rb/csso-rails)
+![CI Status](https://github.com/Vasfed/csso-rails/actions/workflows/test.yml/badge.svg)
 
 Ruby adapter for [github.com/css/csso](https://github.com/css/csso).
 
