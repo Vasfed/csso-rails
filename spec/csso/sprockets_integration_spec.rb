@@ -83,6 +83,8 @@ describe Csso do
     require 'sprockets/railtie'
     require 'csso/railtie'
 
+    skip "rails 5 is not compatible with ruby 3" if RUBY_VERSION >= '3.0' && Rails::VERSION::MAJOR <= 5
+
     fd = fixtures_dir
     app = Class.new(Rails::Application) do
       config.root = fd
@@ -117,7 +119,7 @@ describe Csso do
     ENV['RAILS_GROUPS'] ||= 'assets'
     ENV['RAILS_ENV'] ||= 'test'
 
-    Csso::Compressor.stub :call, data: 'foo_this_is_mock' do
+    Csso::Compressor.stub(:call, { data: 'foo_this_is_mock' }) do
       Rake::Task['assets:precompile'].invoke
     end
 
