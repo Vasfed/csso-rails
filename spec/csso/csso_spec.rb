@@ -21,8 +21,6 @@ describe Csso do
   end
 
   it 'should optimize structure' do
-    skip 'original csso is a bit broken at the moment'
-    # FIXME: csso produces "a{color:#fff;color:red}" on this :(
     expect(subject.optimize("a  {\ncolor: white; } a{color: #ff0000;}")).must_equal 'a{color:red}'
   end
 

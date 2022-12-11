@@ -21,7 +21,7 @@ task default: :spec
 
 file 'csso' do
   puts 'Fetching csso repo...'
-  `git clone --single-branch --depth 1 --no-hardlinks git://github.com/css/csso`
+  `git clone --single-branch --depth 1 --no-hardlinks https://github.com/css/csso.git`
   Dir.chdir('csso')  do
     puts 'Now making web-version, just in case.'
     `npm install && npm run build`
@@ -33,8 +33,8 @@ task update_csso_repo: :csso do
   # ??
   Dir.chdir('csso') do
     puts 'Updating csso...'
-    `git pull --rebase`
-    `yarn install && npm run build`
+    `git reset --hard && git pull --rebase`
+    `npm install && npm run build`
   end
 end
 
